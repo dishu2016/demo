@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+</script>
+<script type="text/javascript">
+
+function show(){
+	$.post("ajax/hello",{},function(result){
+		alert(JSON.stringify(result));
+	});
+	
+}
+
+function showRedis(){
+	$.post("ajax/helloRedis",{},function(result){
+		alert(result);
+	});
+	
+}
+</script>
+
+</head>
+<body>
+<button  onclick="show()">点我</button>
+
+<button  onclick="showRedis()">点我现实Redis</button>
+</body>
+</html>

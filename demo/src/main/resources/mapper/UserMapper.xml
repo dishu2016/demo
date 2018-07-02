@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.domain.User" >
+    <id column="UUID" property="uuid" jdbcType="VARCHAR" />
+    <result column="YH_DM" property="yhDm" jdbcType="VARCHAR" />
+    <result column="GLY_BJ" property="glyBj" jdbcType="CHAR" />
+    <result column="YH_MC" property="yhMc" jdbcType="VARCHAR" />
+    <result column="YH_MM" property="yhMm" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="VARCHAR" />
+    <result column="BZ" property="bz" jdbcType="VARCHAR" />
+    <result column="SFZHM" property="sfzhm" jdbcType="VARCHAR" />
+    <result column="XB" property="xb" jdbcType="CHAR" />
+    <result column="GDDH" property="gddh" jdbcType="VARCHAR" />
+    <result column="SJHM" property="sjhm" jdbcType="VARCHAR" />
+    <result column="DZYJ" property="dzyj" jdbcType="VARCHAR" />
+    <result column="ZF_BJ" property="zfBj" jdbcType="CHAR" />
+    <result column="MACDZ" property="macdz" jdbcType="VARCHAR" />
+    <result column="IPDZ" property="ipdz" jdbcType="VARCHAR" />
+    <result column="IMSI" property="imsi" jdbcType="VARCHAR" />
+    <result column="SJLDYH_DM" property="sjldyhDm" jdbcType="VARCHAR" />
+    <result column="BM_DM" property="bmDm" jdbcType="VARCHAR" />
+    <result column="YGXZ" property="ygxz" jdbcType="CHAR" />
+    <result column="XH" property="xh" jdbcType="INTEGER" />
+    <result column="LR_SJ" property="lrSj" jdbcType="TIMESTAMP" />
+    <result column="LRRY_DM" property="lrryDm" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    UUID, YH_DM, GLY_BJ, YH_MC, YH_MM, age, BZ, SFZHM, XB, GDDH, SJHM, DZYJ, ZF_BJ, MACDZ, 
+    IPDZ, IMSI, SJLDYH_DM, BM_DM, YGXZ, XH, LR_SJ, LRRY_DM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_xt_yh
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_xt_yh
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.domain.User" >
+    insert into t_xt_yh (UUID, YH_DM, GLY_BJ, 
+      YH_MC, YH_MM, age, BZ, 
+      SFZHM, XB, GDDH, SJHM, 
+      DZYJ, ZF_BJ, MACDZ, IPDZ, 
+      IMSI, SJLDYH_DM, BM_DM, 
+      YGXZ, XH, LR_SJ, LRRY_DM
+      )
+    values (#{uuid,jdbcType=VARCHAR}, #{yhDm,jdbcType=VARCHAR}, #{glyBj,jdbcType=CHAR}, 
+      #{yhMc,jdbcType=VARCHAR}, #{yhMm,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, #{bz,jdbcType=VARCHAR}, 
+      #{sfzhm,jdbcType=VARCHAR}, #{xb,jdbcType=CHAR}, #{gddh,jdbcType=VARCHAR}, #{sjhm,jdbcType=VARCHAR}, 
+      #{dzyj,jdbcType=VARCHAR}, #{zfBj,jdbcType=CHAR}, #{macdz,jdbcType=VARCHAR}, #{ipdz,jdbcType=VARCHAR}, 
+      #{imsi,jdbcType=VARCHAR}, #{sjldyhDm,jdbcType=VARCHAR}, #{bmDm,jdbcType=VARCHAR}, 
+      #{ygxz,jdbcType=CHAR}, #{xh,jdbcType=INTEGER}, #{lrSj,jdbcType=TIMESTAMP}, #{lrryDm,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.domain.User" >
+    insert into t_xt_yh
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        UUID,
+      </if>
+      <if test="yhDm != null" >
+        YH_DM,
+      </if>
+      <if test="glyBj != null" >
+        GLY_BJ,
+      </if>
+      <if test="yhMc != null" >
+        YH_MC,
+      </if>
+      <if test="yhMm != null" >
+        YH_MM,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="bz != null" >
+        BZ,
+      </if>
+      <if test="sfzhm != null" >
+        SFZHM,
+      </if>
+      <if test="xb != null" >
+        XB,
+      </if>
+      <if test="gddh != null" >
+        GDDH,
+      </if>
+      <if test="sjhm != null" >
+        SJHM,
+      </if>
+      <if test="dzyj != null" >
+        DZYJ,
+      </if>
+      <if test="zfBj != null" >
+        ZF_BJ,
+      </if>
+      <if test="macdz != null" >
+        MACDZ,
+      </if>
+      <if test="ipdz != null" >
+        IPDZ,
+      </if>
+      <if test="imsi != null" >
+        IMSI,
+      </if>
+      <if test="sjldyhDm != null" >
+        SJLDYH_DM,
+      </if>
+      <if test="bmDm != null" >
+        BM_DM,
+      </if>
+      <if test="ygxz != null" >
+        YGXZ,
+      </if>
+      <if test="xh != null" >
+        XH,
+      </if>
+      <if test="lrSj != null" >
+        LR_SJ,
+      </if>
+      <if test="lrryDm != null" >
+        LRRY_DM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="yhDm != null" >
+        #{yhDm,jdbcType=VARCHAR},
+      </if>
+      <if test="glyBj != null" >
+        #{glyBj,jdbcType=CHAR},
+      </if>
+      <if test="yhMc != null" >
+        #{yhMc,jdbcType=VARCHAR},
+      </if>
+      <if test="yhMm != null" >
+        #{yhMm,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="bz != null" >
+        #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="sfzhm != null" >
+        #{sfzhm,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null" >
+        #{xb,jdbcType=CHAR},
+      </if>
+      <if test="gddh != null" >
+        #{gddh,jdbcType=VARCHAR},
+      </if>
+      <if test="sjhm != null" >
+        #{sjhm,jdbcType=VARCHAR},
+      </if>
+      <if test="dzyj != null" >
+        #{dzyj,jdbcType=VARCHAR},
+      </if>
+      <if test="zfBj != null" >
+        #{zfBj,jdbcType=CHAR},
+      </if>
+      <if test="macdz != null" >
+        #{macdz,jdbcType=VARCHAR},
+      </if>
+      <if test="ipdz != null" >
+        #{ipdz,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null" >
+        #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="sjldyhDm != null" >
+        #{sjldyhDm,jdbcType=VARCHAR},
+      </if>
+      <if test="bmDm != null" >
+        #{bmDm,jdbcType=VARCHAR},
+      </if>
+      <if test="ygxz != null" >
+        #{ygxz,jdbcType=CHAR},
+      </if>
+      <if test="xh != null" >
+        #{xh,jdbcType=INTEGER},
+      </if>
+      <if test="lrSj != null" >
+        #{lrSj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lrryDm != null" >
+        #{lrryDm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.domain.User" >
+    update t_xt_yh
+    <set >
+      <if test="yhDm != null" >
+        YH_DM = #{yhDm,jdbcType=VARCHAR},
+      </if>
+      <if test="glyBj != null" >
+        GLY_BJ = #{glyBj,jdbcType=CHAR},
+      </if>
+      <if test="yhMc != null" >
+        YH_MC = #{yhMc,jdbcType=VARCHAR},
+      </if>
+      <if test="yhMm != null" >
+        YH_MM = #{yhMm,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="bz != null" >
+        BZ = #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="sfzhm != null" >
+        SFZHM = #{sfzhm,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null" >
+        XB = #{xb,jdbcType=CHAR},
+      </if>
+      <if test="gddh != null" >
+        GDDH = #{gddh,jdbcType=VARCHAR},
+      </if>
+      <if test="sjhm != null" >
+        SJHM = #{sjhm,jdbcType=VARCHAR},
+      </if>
+      <if test="dzyj != null" >
+        DZYJ = #{dzyj,jdbcType=VARCHAR},
+      </if>
+      <if test="zfBj != null" >
+        ZF_BJ = #{zfBj,jdbcType=CHAR},
+      </if>
+      <if test="macdz != null" >
+        MACDZ = #{macdz,jdbcType=VARCHAR},
+      </if>
+      <if test="ipdz != null" >
+        IPDZ = #{ipdz,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null" >
+        IMSI = #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="sjldyhDm != null" >
+        SJLDYH_DM = #{sjldyhDm,jdbcType=VARCHAR},
+      </if>
+      <if test="bmDm != null" >
+        BM_DM = #{bmDm,jdbcType=VARCHAR},
+      </if>
+      <if test="ygxz != null" >
+        YGXZ = #{ygxz,jdbcType=CHAR},
+      </if>
+      <if test="xh != null" >
+        XH = #{xh,jdbcType=INTEGER},
+      </if>
+      <if test="lrSj != null" >
+        LR_SJ = #{lrSj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lrryDm != null" >
+        LRRY_DM = #{lrryDm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.domain.User" >
+    update t_xt_yh
+    set YH_DM = #{yhDm,jdbcType=VARCHAR},
+      GLY_BJ = #{glyBj,jdbcType=CHAR},
+      YH_MC = #{yhMc,jdbcType=VARCHAR},
+      YH_MM = #{yhMm,jdbcType=VARCHAR},
+      age = #{age,jdbcType=VARCHAR},
+      BZ = #{bz,jdbcType=VARCHAR},
+      SFZHM = #{sfzhm,jdbcType=VARCHAR},
+      XB = #{xb,jdbcType=CHAR},
+      GDDH = #{gddh,jdbcType=VARCHAR},
+      SJHM = #{sjhm,jdbcType=VARCHAR},
+      DZYJ = #{dzyj,jdbcType=VARCHAR},
+      ZF_BJ = #{zfBj,jdbcType=CHAR},
+      MACDZ = #{macdz,jdbcType=VARCHAR},
+      IPDZ = #{ipdz,jdbcType=VARCHAR},
+      IMSI = #{imsi,jdbcType=VARCHAR},
+      SJLDYH_DM = #{sjldyhDm,jdbcType=VARCHAR},
+      BM_DM = #{bmDm,jdbcType=VARCHAR},
+      YGXZ = #{ygxz,jdbcType=CHAR},
+      XH = #{xh,jdbcType=INTEGER},
+      LR_SJ = #{lrSj,jdbcType=TIMESTAMP},
+      LRRY_DM = #{lrryDm,jdbcType=VARCHAR}
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </update>
+</mapper>
