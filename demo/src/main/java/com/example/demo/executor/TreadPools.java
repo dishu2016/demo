@@ -69,7 +69,10 @@ public class TreadPools {
 	 */
 	public static void excuteThreadPoolExecutor() {
 		ThreadPoolExecutor executor=new ThreadPoolExecutor(1, 1, 10, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(1));
-
+		for (int i = 0; i < 10; i++) {
+			executor.execute(new ManyTask(i));
+		}
+		
 	}
 
 	/**
